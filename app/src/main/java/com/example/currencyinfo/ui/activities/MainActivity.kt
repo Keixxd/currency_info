@@ -2,8 +2,6 @@ package com.example.currencyinfo.ui.activities
 
 import android.content.Context
 import android.os.Bundle
-import android.view.Menu
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -35,22 +33,37 @@ class MainActivity : AppCompatActivity() {
         ListSort.key = SortTypes.AZ_NAME
         setupBottomNavigation()
         fetchRates()
+        manageFetchedData()
+    }
 
+    /**
+     * Manages the fetched data:
+     *
+     * If response's timestamp differs local, database will be updated;
+     *
+     * If not, simply using local database without changes;
+     *
+     * If internet connection is presented nor local database, throws an error message;
+     *
+     * If database is presented, but internet connection isn't, uses local base.
+     */
+
+    private fun manageFetchedData() {
         lifecycleScope.launchWhenCreated {
             viewModel.rates.collect {
-                when(it){
+                when (it) {
                     is ViewModelWrapper.Success<*> -> {
                         val result = it.result as Rates
-                        if(checkTimestamps(result)){
+                        if (checkTimestamps(result)) {
                             viewModel.getDatabaseRates()
-                        }else{
-                            populateDatabase(result)
+                        } else {
+                            updateDatabase(result)
                         }
                     }
                     is ViewModelWrapper.Error -> {
-                        if(!isDatabaseExist()){
+                        if (!isDatabaseExist()) {
                             viewModel.getDatabaseRates()
-                        }else{
+                        } else {
                             showFetchError(it.error)
                         }
                     }
@@ -69,8 +82,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun isDatabaseExist() =  File(ContextCompat.getDataDir(this), "databases").listFiles().isNullOrEmpty()
 
-    //this actually works O_O
-    private fun populateDatabase(rates: Rates) {
+    /**
+     * Updates database, if exists, or simply populates it, if not.
+     */
+
+    private fun updateDatabase(rates: Rates) {
         if(!isDatabaseExist()){
             viewModel.getDatabaseRates().invokeOnCompletion {
                 val dbRates = viewModel.db.value
@@ -101,10 +117,18 @@ class MainActivity : AppCompatActivity() {
         updateTimestamp(rates.timestamp)
     }
 
+    /**
+     * Updates local timestamp, which is stored in SharedPreferences
+     */
+
     private fun updateTimestamp(newValue: Long) {
         val pref = getSharedPreferences("timestamp_pref", Context.MODE_PRIVATE)
         pref.edit().putLong("timestamp_value", newValue).commit()
     }
+
+    /**
+     * Checks the difference between local and fetched timestamp to decide how to manage database in the future
+     */
 
     private fun checkTimestamps(rates: Rates) : Boolean {
         val pref = getSharedPreferences("timestamp_pref", Context.MODE_PRIVATE)

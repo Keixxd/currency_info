@@ -8,7 +8,7 @@ import com.example.currencyinfo.R
 import com.example.currencyinfo.databinding.FragmentRatesBinding
 import com.example.currencyinfo.ui.sort.ListSort
 
-class PopularFragment: ViewBindingFragment() {
+class PopularFragment: RatesListFragment() {
 
     private lateinit var binding: FragmentRatesBinding
 

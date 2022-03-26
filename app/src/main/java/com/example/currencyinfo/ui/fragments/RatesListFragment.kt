@@ -12,7 +12,15 @@ import com.example.currencyinfo.ui.RatesListAdapter
 import com.example.currencyinfo.ui.sort.SortBottomSheet
 import com.example.currencyinfo.ui.viewmodels.MainActivityViewmodel
 
-open class ViewBindingFragment  : Fragment() {
+/**
+ * Superclass to fragments, which displays rates list ([FavoriteFragment] or [PopularFragment])
+ *
+ * Describes, how to toolbar's menu items, and also setups [RecyclerView].
+ */
+
+//It should be a way to put Fragment's binding in constructor...
+
+open class RatesListFragment  : Fragment() {
 
     lateinit var ratesAdapter: RatesListAdapter
     val viewModel: MainActivityViewmodel by activityViewModels()

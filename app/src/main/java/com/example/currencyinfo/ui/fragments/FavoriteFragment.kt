@@ -2,17 +2,13 @@ package com.example.currencyinfo.ui.fragments
 
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.currencyinfo.R
 import com.example.currencyinfo.databinding.FragmentRatesBinding
-import com.example.currencyinfo.ui.RatesListAdapter
 import com.example.currencyinfo.ui.sort.ListSort
-import com.example.currencyinfo.ui.viewmodels.MainActivityViewmodel
 
-class FavoriteFragment : ViewBindingFragment() {
+class FavoriteFragment : RatesListFragment() {
 
     private lateinit var binding: FragmentRatesBinding
 
