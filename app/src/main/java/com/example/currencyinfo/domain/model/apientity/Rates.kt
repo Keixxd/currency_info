@@ -1,4 +1,4 @@
-package com.example.currencyinfo.domain.model
+package com.example.currencyinfo.domain.model.apientity
 
 data class Rates(
     val success: Boolean,

@@ -4,18 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/bottom_sheet_bg.xml" value="0.1565" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/favorite_checkbox_drawable.xml" value="0.123" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_baseline_change_circle_24.xml" value="0.2465" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.174" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_baseline_sort_24.xml" value="0.2465" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.2595" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_baseline_star_outline_24.xml" value="0.2595" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_chart_24.xml" value="0.2465" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2465" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_sort_az.xml" value="0.2465" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_sort_desc_value.xml" value="0.2465" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/ic_sort_za.xml" value="0.2465" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/drawable/search_bg.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/fragment_rates.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/fragment_rates.xml" value="0.2" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/fragment_sort_bottom_sheet.xml" value="0.22807017543859648" />
-        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/rate_item.xml" value="0.4" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/layout/rate_item.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/menu/favorite_menu.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/CurrencyInfo/app/src/main/res/menu/toolbar_menu.xml" value="0.25416666666666665" />
       </map>
     </option>

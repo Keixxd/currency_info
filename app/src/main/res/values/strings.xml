@@ -7,4 +7,5 @@
     <string name="alphabetical_z_a">Alphabetical Z-A</string>
     <string name="value_ascending">Value ascending</string>
     <string name="value_descending">Value descending</string>
+    <string name="search">Search</string>
 </resources>

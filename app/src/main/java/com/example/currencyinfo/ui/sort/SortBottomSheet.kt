@@ -1,4 +1,4 @@
-package com.example.currencyinfo.ui.components
+package com.example.currencyinfo.ui.sort
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,6 +25,7 @@ class SortBottomSheet(private val adapter: RatesListAdapter) : BottomSheetDialog
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupButtons()
     }
 
@@ -33,23 +34,25 @@ class SortBottomSheet(private val adapter: RatesListAdapter) : BottomSheetDialog
             sort1.setOnClickListener {
                 ListSort.key = SortTypes.AZ_NAME
                 adapter.sortDataByKey(ListSort.key)
-                dismiss()
+                closeSheet()
             }
             sort2.setOnClickListener {
                 ListSort.key = SortTypes.ZA_NAME
                 adapter.sortDataByKey(ListSort.key)
-                dismiss()
+                closeSheet()
             }
             sort3.setOnClickListener {
                 ListSort.key = SortTypes.ASCENDING_VALUE
                 adapter.sortDataByKey(ListSort.key)
-                dismiss()
+                closeSheet()
             }
             sort4.setOnClickListener {
                 ListSort.key = SortTypes.DESCENDING_VALUE
                 adapter.sortDataByKey(ListSort.key)
-                dismiss()
+                closeSheet()
             }
         }
     }
+
+    fun closeSheet() = dismiss()
 }
