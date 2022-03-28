@@ -7,6 +7,7 @@ import androidx.annotation.CallSuper
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.viewbinding.ViewBinding
 import com.example.currencyinfo.R
 import com.example.currencyinfo.ui.RatesListAdapter
 import com.example.currencyinfo.ui.sort.SortBottomSheet
@@ -16,14 +17,20 @@ import com.example.currencyinfo.ui.viewmodels.MainActivityViewmodel
  * Superclass to fragments, which displays rates list ([FavoriteFragment] or [PopularFragment])
  *
  * Describes, how to toolbar's menu items, and also setups [RecyclerView].
+ *
+ *
  */
 
-//It should be a way to put Fragment's binding in constructor...
-
-open class RatesListFragment  : Fragment() {
+abstract class ViewBindingFragment<VB : ViewBinding>  : Fragment() {
 
     lateinit var ratesAdapter: RatesListAdapter
     val viewModel: MainActivityViewmodel by activityViewModels()
+
+    private var _binding: ViewBinding? = null
+    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
+
+    protected val binding: VB
+        get() = _binding as VB
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,14 +39,22 @@ open class RatesListFragment  : Fragment() {
     }
 
     @CallSuper
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = bindingInflater.invoke(layoutInflater, container, false)
+        return requireNotNull(_binding).root
+    }
+
+    @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ratesAdapter = RatesListAdapter(viewModel)
     }
 
-    open fun fetchRates() {
-        viewModel.getRates()
-    }
+    abstract fun fetchRates()
 
     private fun onSearch(item: MenuItem) {
         val searchView = item.actionView as SearchView

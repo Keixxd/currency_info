@@ -8,18 +8,10 @@ import com.example.currencyinfo.R
 import com.example.currencyinfo.databinding.FragmentRatesBinding
 import com.example.currencyinfo.ui.sort.ListSort
 
-class PopularFragment: RatesListFragment() {
+class PopularFragment: ViewBindingFragment<FragmentRatesBinding>() {
 
-    private lateinit var binding: FragmentRatesBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRatesBinding.inflate(inflater)
-        return binding.root
-    }
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentRatesBinding
+        get() = FragmentRatesBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,6 +48,10 @@ class PopularFragment: RatesListFragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = ratesAdapter
         }
+    }
+
+    override fun fetchRates() {
+        viewModel.getRates()
     }
 
 }
